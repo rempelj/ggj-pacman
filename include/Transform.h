@@ -14,6 +14,11 @@
 
 class Transform : public GameComponent {
 public:
+	int x;
+	int y;
+	int width;
+	int height;
+
 	Transform();
 	virtual void update();
 

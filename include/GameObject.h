@@ -1,7 +1,7 @@
 /*
  * GameObject.h
  *
- * Container for GameComponents. Automatically attaches the Transform component.
+ * Represents any game entity. Container for GameComponents. Automatically attaches the Transform component.
  *
  *  Created on: Jan 24, 2015
  *      Author: justinrempel
@@ -11,16 +11,25 @@
 #define GAMEOBJECT_H_
 
 #include "GameComponent.h"
+#include <vector>
+#include "Transform.h"
 
 class GameObject {
+private:
+	std::vector<GameComponent*> components;
+	Transform *_transform;
 public:
 	GameObject();
 
+	Transform *getTransform() { return _transform; }
+
+	void update();
+
 	// Attaches and returns a GameComponent
-	template <class T> GameComponent* addComponent() {
+	template <class T> T* addComponent() {
 		T *component = new T();
 
-		// TODO: attach component to this GameObject
+		components.push_back(component);
 
 		return component;
 	}

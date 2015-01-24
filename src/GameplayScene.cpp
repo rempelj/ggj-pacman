@@ -7,9 +7,12 @@
 
 #include <allegro5/allegro.h>
 #include "GameplayScene.h"
+#include "GameObject.h"
+
+#include <stdio.h>
 
 GameplayScene::GameplayScene() {
-
+	objects.push_back(pacman);
 }
 
 void GameplayScene::update() {

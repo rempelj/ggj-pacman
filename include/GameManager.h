@@ -15,7 +15,7 @@
 
 class GameManager {
 private:
-	GameplayScene gameplayScreen;
+	GameplayScene gameplayScene;
 
 	GameManager();
 	GameManager(GameManager const&);
@@ -30,8 +30,8 @@ public:
 
 	void start();
 
-	GameplayScene *getGameplayScreen() {
-		return &gameplayScreen;
+	GameplayScene *getGameplayScene() {
+		return &gameplayScene;
 	}
 };
 

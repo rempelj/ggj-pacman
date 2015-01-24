@@ -7,7 +7,12 @@
 
 #include "GameObject.h"
 #include "Transform.h"
+#include <vector>
 
 GameObject::GameObject() {
-	addComponent<Transform>();
+	_transform = addComponent<Transform>();
+}
+
+void GameObject::update() {
+
 }

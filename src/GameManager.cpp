@@ -73,8 +73,8 @@ void GameManager::start() {
 			if (ev.type == ALLEGRO_EVENT_TIMER){
 
 				// GAME LOOP GOES HERE
-				gameplayScreen.update();
-				gameplayScreen.render();
+				gameplayScene.update();
+				gameplayScene.render();
 
 			}
 		}
