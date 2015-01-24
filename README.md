@@ -1,3 +1,7 @@
+Code Standards
+=============
+- All Singletons are named Managers. Example: GameManager
+
 Setup with OSX and Eclipse
 =====================
 - Install Allegro5: https://wiki.allegro.cc/index.php?title=Install_Allegro5_From_Git
