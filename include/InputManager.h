@@ -10,7 +10,7 @@
 #ifndef INPUTMANAGER_H_
 #define INPUTMANAGER_H_
 
-#include "allegro5/allegro.h"
+#include <allegro5/allegro.h>
 
 class InputManager {
 private:
