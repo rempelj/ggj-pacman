@@ -11,11 +11,12 @@
 #include "Scene.h"
 #include <vector>
 #include "GameObject.h"
+#include "PacmanCorpse.h"
 
 class GameplayScene : public Scene {
 private:
 	std::vector<GameObject> objects;
-	GameObject pacman;
+	PacmanCorpse *pacman;
 public:
 	GameplayScene();
 

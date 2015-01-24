@@ -8,9 +8,12 @@
 #include <allegro5/allegro.h>
 #include "GameplayScene.h"
 #include "GameObject.h"
+#include "PacmanCorpse.h"
 
 GameplayScene::GameplayScene() {
-	objects.push_back(pacman);
+	GameObject pacmanGo;
+	pacman = pacmanGo.addComponent<PacmanCorpse>();
+	objects.push_back(pacmanGo);
 }
 
 void GameplayScene::update() {
