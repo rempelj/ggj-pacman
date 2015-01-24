@@ -17,7 +17,7 @@ class GameManager {
 private:
 	GameplayScene gameplayScene;
 
-	GameManager();
+	GameManager(){}
 	GameManager(GameManager const&);
 	void operator=(GameManager const&);
 

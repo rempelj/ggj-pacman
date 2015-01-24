@@ -9,8 +9,6 @@
 #include "GameplayScene.h"
 #include "GameObject.h"
 
-#include <stdio.h>
-
 GameplayScene::GameplayScene() {
 	objects.push_back(pacman);
 }

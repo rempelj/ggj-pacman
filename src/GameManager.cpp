@@ -8,10 +8,7 @@
 #include <stdio.h>
 #include <allegro5/allegro.h>
 #include "GameManager.h"
-
-GameManager::GameManager() {
-
-}
+#include "InputManager.h"
 
 void GameManager::start() {
 	ALLEGRO_DISPLAY *display = NULL;
@@ -45,9 +42,14 @@ void GameManager::start() {
 		return;
 	}
 	
+	if(!al_install_keyboard()) {
+		fprintf(stderr, "failed to initialize the keyboard!\n");
+		return;
+	 }
 
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
+	al_register_event_source(event_queue, al_get_keyboard_event_source());
 
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 
@@ -68,6 +70,10 @@ void GameManager::start() {
 
 			if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){ 
 				break;
+			}
+
+			if(ev.type == ALLEGRO_EVENT_KEY_DOWN) {
+				InputManager::instance().handleEvent(ev);
 			}
 
 			if (ev.type == ALLEGRO_EVENT_TIMER){
