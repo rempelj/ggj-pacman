@@ -19,7 +19,13 @@ public:
 	int width;
 	int height;
 
-	Transform();
+	Transform(GameObject *owner):GameComponent(owner){
+		x = 0;
+		y = 0;
+		width = 0;
+		height = 0;
+	}
+
 	virtual void update();
 
 };

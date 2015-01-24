@@ -27,7 +27,7 @@ public:
 
 	// Attaches and returns a GameComponent
 	template <class T> T* addComponent() {
-		T *component = new T();
+		T *component = new T(this);
 
 		components.push_back(component);
 
