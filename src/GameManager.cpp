@@ -1,5 +1,5 @@
 /*
- * Game.cpp
+ * GameManager.cpp
  *
  *  Created on: Jan 23, 2015
  *      Author: justinrempel
@@ -7,9 +7,13 @@
 
 #include <stdio.h>
 #include <allegro5/allegro.h>
-#include "Game.h"
+#include "GameManager.h"
 
-void Game::start() {
+GameManager::GameManager() {
+
+}
+
+void GameManager::start() {
 	ALLEGRO_DISPLAY *display = NULL;
 	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 	ALLEGRO_TIMER *timer = NULL;
@@ -57,8 +61,6 @@ void Game::start() {
 		ALLEGRO_TIMEOUT timeout;
 		al_init_timeout(&timeout, 0.06);
 
-
-
 		bool get_event = al_wait_for_event_until(event_queue, &ev, &timeout);
 
 		
@@ -70,21 +72,13 @@ void Game::start() {
 
 			if (ev.type == ALLEGRO_EVENT_TIMER){
 
-
-
 				// GAME LOOP GOES HERE
-
-				// game update logic
-
-				// rendering
+				gameplayScreen.update();
+				gameplayScreen.render();
 
 			}
 		}
 
-
-		// probably delete this stuff / move it to rendering code
-		al_clear_to_color(al_map_rgb(0, 0, 0));  
-		al_flip_display();
 	}
 
 	al_destroy_display(display);

@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <allegro5/allegro.h>
-#include "Game.h"
+#include "GameManager.h"
 
 int main(int argc, char **argv){
-	Game game;
-	game.start();
+	GameManager::instance().start();
 	return 0;
 }
