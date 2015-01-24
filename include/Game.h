@@ -10,12 +10,8 @@
 
 
 class Game {
-private:
-	static float delta;
 public:
 	void start();
-
-	static float deltaTime() { return delta; }
 };
 
 
