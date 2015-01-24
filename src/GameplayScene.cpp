@@ -16,7 +16,9 @@ GameplayScene::GameplayScene() {
 }
 
 void GameplayScene::update() {
-
+	for(int i =0; i < objects.size(); i++) {
+		objects[i].update();
+	}
 }
 
 void GameplayScene::render() {
