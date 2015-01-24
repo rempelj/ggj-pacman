@@ -12,6 +12,9 @@
 void Game::start() {
 	ALLEGRO_DISPLAY *display = NULL;
 	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+	ALLEGRO_TIMER *timer = NULL;
+
+	const double FPS = 60.0;
 
 	if(!al_init()) {
 	  fprintf(stderr, "failed to initialize allegro!\n");
@@ -31,26 +34,56 @@ void Game::start() {
 		return;
 	}
 
+	timer = al_create_timer(1.0/FPS);
+	if (!timer){
+		fprintf(stderr, "failed to create timer!\n");
+		al_destroy_display(display);
+		return;
+	}
+	
+
 	al_register_event_source(event_queue, al_get_display_event_source(display));
+	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 
 	al_flip_display();
+
+	al_start_timer(timer);
+	
 
 	while(true) {
 		ALLEGRO_EVENT ev;
 		ALLEGRO_TIMEOUT timeout;
 		al_init_timeout(&timeout, 0.06);
 
+
+
 		bool get_event = al_wait_for_event_until(event_queue, &ev, &timeout);
 
-		if (get_event){
-			if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+		
+		if (get_event){ // Event loop 
+
+			if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE){ 
 				break;
+			}
+
+			if (ev.type == ALLEGRO_EVENT_TIMER){
+
+
+
+				// GAME LOOP GOES HERE
+
+				// game update logic
+
+				// rendering
+
 			}
 		}
 
-		al_clear_to_color(al_map_rgb(0, 0, 0));
+
+		// probably delete this stuff / move it to rendering code
+		al_clear_to_color(al_map_rgb(0, 0, 0));  
 		al_flip_display();
 	}
 
