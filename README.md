@@ -1,6 +1,6 @@
 Code Standards
 =============
-- All Singletons are named Managers. Example: GameManager
+- All Singletons are "Managers". Example: GameManager
 
 Setup with OSX and Eclipse
 =====================
