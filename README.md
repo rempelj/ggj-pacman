@@ -2,6 +2,13 @@ Code Standards
 =============
 - All Singletons are "Managers". Example: GameManager
 
+GameObjects
+==========
+- Every entity in the game is represented as a GameObject.
+- GameObjects can contain many GameComponents
+- Each GameComponent provides a specific functionality 
+- Every GameObject contains a Transform component to represent the object's position and size
+
 Setup with OSX and Eclipse
 =====================
 - Install Allegro5: https://wiki.allegro.cc/index.php?title=Install_Allegro5_From_Git
