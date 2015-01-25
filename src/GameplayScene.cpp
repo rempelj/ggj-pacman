@@ -74,6 +74,10 @@ void GameplayScene::init() {
 		if (al_init_image_addon()) {
 			Image = al_load_bitmap("assets/ghost.png");
 			ghostGo->addComponent<Sprite>()->SetSprite(Image);
+
+			// TODO: set ghost positions somewhere other than the centre
+			ghostGo->getTransform()->x = DISPLAY_WIDTH/2;
+			ghostGo->getTransform()->y = DISPLAY_HEIGHT/2;
 		}
 
 		InputManager::instance().registerListener(player);
