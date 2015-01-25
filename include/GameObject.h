@@ -37,9 +37,20 @@ public:
 		return component;
 	}
 
+	template <class T> int removeComponent(T* component) {
+		for (int i = 0; i < components.size(); i++){
+			if (components[i] == component){
+				components.erase(components.begin() + i);
+				return 1;
+			}
+		}
+		return 0;
+	}
+
 	// Return a component of specified type, or null if not found
 	template <class T> T* getComponent() {
 		for (int i = 0; i < components.size(); i++) {
+			//typeinfo blah = typeid(*components[i]);
 			if(typeid(*components[i]) == typeid(T)) {
 				return (T*)components[i];
 			}

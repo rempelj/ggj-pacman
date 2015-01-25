@@ -16,15 +16,19 @@
 
 class GameplayScene : public Scene {
 private:
-	std::vector<GameObject*> objects;
+	
 	PacmanCorpse *pacman;
 	std::vector<Ghost*> players;
 public:
+	std::vector<GameObject*> objects;
+
 	GameplayScene(){}
 
 	virtual void init();
 	virtual void update();
 	virtual void render();
+
+	int RemoveObject(GameObject* obj);
 };
 
 #endif /* GAMEPLAYSCENE_H_ */

@@ -18,9 +18,11 @@ class GameObject;
 
 class GameComponent {
 private:
-	GameObject *_gameObject;
+	
 
 public:
+	GameObject *_gameObject;
+
 	GameComponent(){
 		
 	}
