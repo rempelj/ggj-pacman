@@ -14,6 +14,7 @@
 #include "PacmanCorpse.h"
 #include "Common.h"
 #include "Ghost.h"
+#include "SolidCollider.h"
 #include "InputManager.h"
 
 void GameplayScene::init() {
@@ -46,6 +47,7 @@ void GameplayScene::init() {
 					tile->getTransform()->x = i * al_get_bitmap_width(Image);
 					tile->getTransform()->y = j * al_get_bitmap_height(Image);
 					tile->addComponent<Sprite>()->SetSprite(Image);
+					tile->addComponent<SolidCollider>();
 					objects.push_back(tile);
 
 
@@ -68,6 +70,7 @@ void GameplayScene::init() {
 	for(int i = 0; i < NUM_PLAYERS; i++) {
 		GameObject *ghostGo = new GameObject();
 		Ghost *player = ghostGo->addComponent<Ghost>();
+		player->SetVector(objects);
 		objects.push_back(ghostGo);
 
 		players.push_back(player);

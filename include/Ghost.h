@@ -11,14 +11,20 @@
 #include "GameComponent.h"
 #include "Common.h"
 #include "InputListener.h"
+#include <vector>
 
 class Ghost : public GameComponent, public InputListener {
 public:
 	Direction direction;
+	std::vector<GameObject*> otherObjects;
 
 	Ghost(GameObject *owner):GameComponent(owner){
 		direction = E;
 	}
+
+	int TryMove(int xMove, int yMove);
+
+	void SetVector(std::vector<GameObject*> Objects);
 
 	virtual void update();
 	virtual void render() {}

@@ -12,6 +12,7 @@
 
 #include "GameComponent.h"
 #include <vector>
+#include <typeinfo>
 #include "Transform.h"
 #include "Sprite.h"
 
@@ -39,8 +40,8 @@ public:
 	// Return a component of specified type, or null if not found
 	template <class T> T* getComponent() {
 		for (int i = 0; i < components.size(); i++) {
-			if(typeid(components[i]) == typeid(T)) {
-				return components[i];
+			if(typeid(*components[i]) == typeid(T)) {
+				return (T*)components[i];
 			}
 		}
 
