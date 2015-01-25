@@ -12,7 +12,7 @@ GameObjects
 GameComponents
 ==============
 - GameComponents should never be initialized on their own. Instead, initialize a GameComponent by passing the Type to a GameObject, via GameObject#addComponent();
-- The GameObject will return the new GameObject, from there you can call setup functions for the component.
+- The GameObject will return the new GameComponent. Then you can call setup functions for the component.
 
 Setup with OSX and Eclipse
 =====================
