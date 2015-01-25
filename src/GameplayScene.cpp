@@ -6,6 +6,7 @@
  */
 
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include "GameplayScene.h"
 #include "GameObject.h"
 #include "PacmanCorpse.h"
@@ -36,5 +37,11 @@ void GameplayScene::update() {
 
 void GameplayScene::render() {
 	al_clear_to_color(al_map_rgb(0, 0, 0));
+
+	for(int i =0; i < objects.size(); i++) {
+		Transform* t = objects[i]->getTransform();
+		al_draw_filled_rectangle(t->x, t->y, t->x+t->width, t->y+t->height, al_map_rgb(0,255,0));
+	}
+
 	al_flip_display();
 }

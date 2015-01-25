@@ -14,13 +14,13 @@ void Ghost::update(){
 
 	switch(direction){
 		case N:
-			t->y++;
+			t->y--;
 			break;
 		case E:
 			t->x++;
 			break;
 		case S:
-			t->y--;
+			t->y++;
 			break;
 		case W:
 			t->x--;

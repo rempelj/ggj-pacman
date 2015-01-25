@@ -11,6 +11,7 @@
 #define TRANSFORM_H_
 
 #include "GameComponent.h"
+#include "Common.h"
 
 class Transform : public GameComponent {
 public:
@@ -22,8 +23,8 @@ public:
 	Transform(GameObject *owner):GameComponent(owner){
 		x = 0;
 		y = 0;
-		width = 0;
-		height = 0;
+		width = TILE_WIDTH;
+		height = TILE_HEIGHT;
 	}
 
 	virtual void update();

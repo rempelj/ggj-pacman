@@ -16,7 +16,7 @@ public:
 	Direction direction;
 
 	Ghost(GameObject *owner):GameComponent(owner){
-		direction = N;
+		direction = E;
 	}
 
 	virtual void update();
