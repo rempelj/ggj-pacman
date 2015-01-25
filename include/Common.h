@@ -15,8 +15,8 @@ enum Direction { N, E, S, W };
 static const int NUM_PLAYERS = 4;
 static const int DISPLAY_WIDTH = 224;
 static const int DISPLAY_HEIGHT = 288;
-static const int TILE_WIDTH = 5;
-static const int TILE_HEIGHT = 5;
+static const int TILE_WIDTH = 8;
+static const int TILE_HEIGHT = 8;
 
 // debug flags
 static const bool DEBUG_RENDER_HITBOXES = true;

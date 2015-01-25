@@ -24,7 +24,7 @@ void GameplayScene::init() {
 
 	ALLEGRO_BITMAP *Image = NULL;
 	if (al_init_image_addon()) {
-		Image = al_load_bitmap("deadpac.png");
+		Image = al_load_bitmap("assets/deadpac.png");
 		pacmanGo->addComponent<Sprite>()->SetSprite(Image);
 	}
 
@@ -37,6 +37,11 @@ void GameplayScene::init() {
 		objects.push_back(ghostGo);
 
 		players.push_back(player);
+
+		if (al_init_image_addon()) {
+			Image = al_load_bitmap("assets/ghost.png");
+			ghostGo->addComponent<Sprite>()->SetSprite(Image);
+		}
 
 		InputManager::instance().registerListener(player);
 	}
