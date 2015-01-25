@@ -58,7 +58,6 @@ void GameManager::start() {
 
 	al_start_timer(timer);
 	
-
 	while(true) {
 		ALLEGRO_EVENT ev;
 		ALLEGRO_TIMEOUT timeout;
