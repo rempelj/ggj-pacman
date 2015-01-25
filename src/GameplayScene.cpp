@@ -9,16 +9,28 @@
 #include "GameplayScene.h"
 #include "GameObject.h"
 #include "PacmanCorpse.h"
+#include "Common.h"
+#include "Ghost.h"
 
 GameplayScene::GameplayScene() {
-	GameObject pacmanGo;
-	pacman = pacmanGo.addComponent<PacmanCorpse>();
+	// add pacman's corpse to the scene
+	GameObject *pacmanGo = new GameObject();
+	pacman = pacmanGo->addComponent<PacmanCorpse>();
 	objects.push_back(pacmanGo);
+
+	// add players (ghosts)
+	for(int i = 0; i < NUM_PLAYERS; i++) {
+		GameObject *ghostGo = new GameObject();
+		Ghost *player = ghostGo->addComponent<Ghost>();
+		objects.push_back(ghostGo);
+
+		players.push_back(player);
+	}
 }
 
 void GameplayScene::update() {
 	for(int i =0; i < objects.size(); i++) {
-		objects[i].update();
+		objects[i]->update();
 	}
 }
 

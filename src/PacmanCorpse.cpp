@@ -9,5 +9,4 @@
 #include "PacmanCorpse.h"
 
 void PacmanCorpse::update() {
-
 }
