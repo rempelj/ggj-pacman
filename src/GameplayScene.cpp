@@ -117,5 +117,6 @@ int GameplayScene::RemoveObject(GameObject* obj){	// TODO: CLEANUP CODE
 			return 1;
 		}
 	}
+	delete obj;
 	return 0;
 }

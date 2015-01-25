@@ -33,7 +33,8 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
-	virtual ~GameComponent(){}
+	virtual ~GameComponent(){
+	}
 
 	GameObject *getGameObject() {
 		return _gameObject;
