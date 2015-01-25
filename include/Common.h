@@ -21,7 +21,4 @@ const int TILE_COUNT_X = 28;
 const int TILE_COUNT_Y = 36;
 const int STUN_DURATION = 20;
 
-// debug flags
-const bool DEBUG_RENDER_HITBOXES = false;
-
 #endif /* COMMON_H_ */
