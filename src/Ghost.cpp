@@ -29,7 +29,9 @@ int Ghost::TryMove(int xMove, int yMove){
 
 	for (int i = 0; i < otherObjects->size(); i++)
 	{
-		
+		if ((*otherObjects)[i] == _gameObject){
+			break;
+		}
 		Transform *c = otherObjects->at(i)->getTransform();
 
 		if (   (potX + t->width > c->x)
