@@ -26,4 +26,20 @@ void Ghost::update(){
 			t->x--;
 			break;
 	}
+
+	if(t->x > DISPLAY_WIDTH) {
+		t->x = 0;
+	}
+
+	if(t->x < 0) {
+		t->x = DISPLAY_WIDTH;
+	}
+
+	if(t->y < 0) {
+		t->y = DISPLAY_HEIGHT;
+	}
+
+	if(t->y > DISPLAY_HEIGHT) {
+		t->y = 0;
+	}
 }
