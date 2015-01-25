@@ -13,11 +13,13 @@
 #include "GameComponent.h"
 #include <vector>
 #include "Transform.h"
+#include "Sprite.h"
 
 class GameObject {
 private:
 	std::vector<GameComponent*> components;
 	Transform *_transform;
+	Sprite esprite;
 public:
 	GameObject();
 
@@ -28,7 +30,7 @@ public:
 
 	// Attaches and returns a GameComponent
 	template <class T> T* addComponent() {
-		T *component = new T();
+		T *component = new T(this);
 
 		components.push_back(component);
 

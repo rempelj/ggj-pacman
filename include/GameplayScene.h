@@ -11,11 +11,14 @@
 #include "Scene.h"
 #include <vector>
 #include "GameObject.h"
+#include "PacmanCorpse.h"
+#include "Ghost.h"
 
 class GameplayScene : public Scene {
 private:
-	std::vector<GameObject> objects;
-	GameObject pacman;
+	std::vector<GameObject*> objects;
+	PacmanCorpse *pacman;
+	std::vector<Ghost*> players;
 public:
 	GameplayScene();
 

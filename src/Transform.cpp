@@ -7,10 +7,6 @@
 
 #include "Transform.h"
 
-Transform::Transform() {
-
-}
-
 void Transform::update() {
 
 }

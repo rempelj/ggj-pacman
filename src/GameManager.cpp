@@ -9,6 +9,7 @@
 #include <allegro5/allegro.h>
 #include "GameManager.h"
 #include "InputManager.h"
+#include "Common.h"
 
 void GameManager::start() {
 	ALLEGRO_DISPLAY *display = NULL;
@@ -22,7 +23,7 @@ void GameManager::start() {
 	  return;
 	}
 
-	display = al_create_display(640, 480);
+	display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 	if(!display) {
 	  fprintf(stderr, "failed to create display!\n");
 	  return;

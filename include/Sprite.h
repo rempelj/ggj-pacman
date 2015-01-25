@@ -7,8 +7,7 @@
 *      Author: alex rehnby
 */
 
-#ifndef TRANSFORM_H_
-#define TRANSFORM_H_
+
 
 #include "GameComponent.h"
 #include <allegro5/allegro.h>
@@ -24,6 +23,3 @@ public:
 
 };
 
-
-
-#endif /* TRANSFORM_H_ */
