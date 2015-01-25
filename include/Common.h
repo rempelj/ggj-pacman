@@ -12,13 +12,15 @@
 enum Direction { N, E, S, W };
 
 // game settings
-static const int NUM_PLAYERS = 4;
-static const int DISPLAY_WIDTH = 224;
-static const int DISPLAY_HEIGHT = 288;
-static const int TILE_WIDTH = 8;
-static const int TILE_HEIGHT = 8;
+const int NUM_PLAYERS = 4;
+const int DISPLAY_WIDTH = 224;
+const int DISPLAY_HEIGHT = 288;
+const int TILE_WIDTH = 8;
+const int TILE_HEIGHT = 8;
+const int TILE_COUNT_X = 28;
+const int TILE_COUNT_Y = 36;
 
 // debug flags
-static const bool DEBUG_RENDER_HITBOXES = false;
+const bool DEBUG_RENDER_HITBOXES = false;
 
 #endif /* COMMON_H_ */

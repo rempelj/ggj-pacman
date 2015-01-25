@@ -16,6 +16,7 @@
 #include "Ghost.h"
 #include "SolidCollider.h"
 #include "InputManager.h"
+#include "TileMapHelper.h"
 
 void GameplayScene::init() {
 
@@ -26,11 +27,7 @@ void GameplayScene::init() {
 	ALLEGRO_BITMAP *Image = NULL;
 	if (al_init_image_addon()) {
 
-		int map[4][6] = {
-		{ 0, 0, 0, 0, 0, 1 },
-		{ 0, 0, 0, 0, 0, 1 },
-		{ 0, 0, 0, 0, 0, 1 },
-		{ 1, 1, 1, 1, 1, 1 } };
+		int **map = loadLevel("assets/level1.map");
 
 		ALLEGRO_BITMAP* targ = al_get_target_bitmap();
 		ALLEGRO_BITMAP* temp = al_load_bitmap("assets/tile.png");
@@ -39,9 +36,8 @@ void GameplayScene::init() {
 		al_draw_scaled_bitmap(temp, 0, 0, al_get_bitmap_width(Image), al_get_bitmap_height(Image), 0, 0, TILE_WIDTH, TILE_HEIGHT, 0);
 		al_set_target_bitmap(targ);
 
-
-		for (int i = 0; i < 4; i++){
-			for (int j = 0; j < 6; j++){
+		for (int i = 0; i < TILE_COUNT_X; i++){
+			for (int j = 0; j < TILE_COUNT_Y; j++){
 				if (map[i][j]){
 					GameObject *tile = new GameObject();
 					tile->getTransform()->x = i * al_get_bitmap_width(Image);
