@@ -2,11 +2,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
-Sprite::Sprite() {
 
-}
-
-Sprite::Sprite(ALLEGRO_BITMAP *Bits){
+void Sprite::SetSprite(ALLEGRO_BITMAP* Bits){
 	Bitmap = al_clone_bitmap(Bits);
 }
 

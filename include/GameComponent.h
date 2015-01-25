@@ -21,13 +21,16 @@ private:
 	GameObject *_gameObject;
 
 public:
+	GameComponent(){
+
+	}
 	GameComponent(GameObject *owner){
 		_gameObject = owner;
 	}
 
 	virtual void update() = 0;
 
-	//virtual ALLEGRO_BITMAP* GetBitMap() = 0;
+
 
 	virtual ~GameComponent(){}
 

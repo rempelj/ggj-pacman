@@ -1,4 +1,4 @@
-/*
+﻿/*
  * GameplayScene.cpp
  *
  *  Created on: Jan 24, 2015
@@ -6,11 +6,9 @@
  */
 
 #include <allegro5/allegro.h>
-<<<<<<< HEAD
+
 #include <allegro5/allegro_image.h>
-=======
-#include <allegro5/allegro_primitives.h>
->>>>>>> 1df552ff2ebadf292320c454ede531e82c7d5a7c
+
 #include "GameplayScene.h"
 #include "GameObject.h"
 #include "PacmanCorpse.h"
@@ -19,9 +17,19 @@
 #include "InputManager.h"
 
 GameplayScene::GameplayScene() {
+	
+	
+	
+
 	// add pacman's corpse to the scene
-	GameObject *pacmanGo = new GameObject();
+	GameObject *pacmanGo = new GameObject();\
 	pacman = pacmanGo->addComponent<PacmanCorpse>();
+
+	Sprite* sprite = pacmanGo->addComponent<Sprite>();
+//	if (!Image){
+		//sprite->SetSprite(Image);
+	//}
+	
 	objects.push_back(pacmanGo);
 
 	// add players (ghosts)
@@ -47,7 +55,7 @@ void GameplayScene::render() {
 
 	for(int i =0; i < objects.size(); i++) {
 		Transform* t = objects[i]->getTransform();
-		al_draw_filled_rectangle(t->x, t->y, t->x+t->width, t->y+t->height, al_map_rgb(0,255,0));
+		//al_draw_filled_rectangle(t->x, t->y, t->x+t->width, t->y+t->height, al_map_rgb(0,255,0));
 	}
 
 	al_flip_display();

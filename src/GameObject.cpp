@@ -28,7 +28,7 @@ void GameObject::render(){
 		{
 			
 			ALLEGRO_BITMAP* bits = dynamic_cast<Sprite*>(components[i])->Bitmap;
-			al_draw_bitmap(Image, 0, 0, 0); 
+			al_draw_bitmap(bits, 0, 0, 0); 
 		}
 			
 	}
