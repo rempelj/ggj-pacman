@@ -30,7 +30,7 @@ int Ghost::TryMove(int xMove, int yMove){
 	for (int i = 0; i < otherObjects->size(); i++)
 	{
 		if ((*otherObjects)[i] == _gameObject){
-			break;
+			continue;
 		}
 		Transform *c = otherObjects->at(i)->getTransform();
 
@@ -55,27 +55,6 @@ int Ghost::TryMove(int xMove, int yMove){
 					if (otherGhost){
 						otherGhost->Stun();
 					}
-				}
-			}
-
-
-			
-
-		
-
-			if (otherObjects->at(i)->getComponent<SolidCollider>()){
-				return 0;
-			}
-
-			PacmanCorpse* pac = otherObjects->at(i)->getComponent<PacmanCorpse>();
-			if (pac){
-				ALLEGRO_BITMAP *temp = pac->GetSprite();
-				otherObjects->at(i)->removeComponent<PacmanCorpse>(pac);
-				_gameObject->addComponent<PacmanCorpse>()->SetSprite(temp);
-
-				Ghost* otherGhost = otherObjects->at(i)->getComponent<Ghost>();
-				if (otherGhost){
-					otherGhost->Stun();
 				}
 			}
 
