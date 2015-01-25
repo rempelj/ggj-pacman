@@ -18,8 +18,10 @@ class PacmanCorpse : public Sprite {
 public:
 	PacmanCorpse(GameObject *owner):Sprite(owner){
 		Transform *t = getGameObject()->getTransform();
-		t->x = DISPLAY_WIDTH/2;
-		t->y = DISPLAY_HEIGHT/3;
+		if(t->x == 0) 
+			t->x = DISPLAY_WIDTH / 2;
+		if (t->y == 0)
+			t->y = DISPLAY_HEIGHT/3;
 
 
 	}
