@@ -17,6 +17,7 @@
 #include "SolidCollider.h"
 #include "InputManager.h"
 #include "TileMapHelper.h"
+#include "Pellet.h"
 
 void GameplayScene::init() {
 
@@ -34,17 +35,24 @@ void GameplayScene::init() {
 		al_draw_scaled_bitmap(temp, 0, 0, al_get_bitmap_width(Image), al_get_bitmap_height(Image), 0, 0, TILE_WIDTH, TILE_HEIGHT, 0);
 		al_set_target_bitmap(targ);
 
+		ALLEGRO_BITMAP *PelletImage = al_load_bitmap("assets/pellet.png");
+
 		for (int i = 0; i < TILE_COUNT_X; i++){
 			for (int j = 0; j < TILE_COUNT_Y; j++){
-				if (map[j][i]){
+				if (map[j][i] == TILE_WALL){
 					GameObject *tile = new GameObject();
 					tile->getTransform()->x = i * al_get_bitmap_width(Image);
 					tile->getTransform()->y = j * al_get_bitmap_height(Image);
 					tile->addComponent<Sprite>()->SetSprite(Image);
 					tile->addComponent<SolidCollider>();
 					objects.push_back(tile);
-
-
+				} else if (map[j][i] == TILE_PELLET) {
+					GameObject *tile = new GameObject();
+					tile->getTransform()->x = i * TILE_WIDTH;
+					tile->getTransform()->y = j * TILE_HEIGHT;
+					tile->addComponent<Sprite>()->SetSprite(PelletImage);
+					tile->addComponent<Pellet>();
+					objects.push_back(tile);
 				}
 				
 			}

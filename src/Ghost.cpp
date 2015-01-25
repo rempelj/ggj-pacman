@@ -10,6 +10,8 @@
 #include "GameObject.h"
 #include "SolidCollider.h"
 #include "PacmanCorpse.h"
+#include "Pellet.h"
+#include "GameManager.h"
 
 void Ghost::SetVector(std::vector<GameObject*>* Objects){
 	otherObjects = Objects;
@@ -47,7 +49,17 @@ int Ghost::TryMove(int xMove, int yMove){
 				}
 			}
 
+<<<<<<< HEAD
 			
+=======
+			Pellet* pellet = otherObjects[i]->getComponent<Pellet>();
+			if (pellet){
+				GameObject *pelletGo = otherObjects[i];
+				GameManager::instance().getGameplayScene()->RemoveObject(pelletGo);
+				score++;
+				printf("score: %d\n", score);
+			}
+>>>>>>> 5f844a8ab8864c1e99f4adf2057d48da16ed6bc7
 
 		}
 		
