@@ -30,9 +30,7 @@ public:
 
 	virtual void update();
 	virtual void render(){
-		if (DEBUG_RENDER_HITBOXES) {
-			//al_draw_filled_rectangle(x, y, x+width, y+height, al_map_rgb(0,255,0));
-		}
+		//al_draw_filled_rectangle(x, y, x+width, y+height, al_map_rgb(0,255,0));
 	}
 };
 

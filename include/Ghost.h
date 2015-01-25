@@ -26,6 +26,9 @@ public:
 
 
 	Ghost(GameObject *owner):GameComponent(owner){
+		otherObjects = nullptr;
+		score = 0;
+		stunFrames = 0;
 		direction = E;
 	}
 
