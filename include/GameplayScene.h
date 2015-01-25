@@ -20,8 +20,9 @@ private:
 	PacmanCorpse *pacman;
 	std::vector<Ghost*> players;
 public:
-	GameplayScene();
+	GameplayScene(){}
 
+	virtual void init();
 	virtual void update();
 	virtual void render();
 };

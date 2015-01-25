@@ -10,8 +10,8 @@
 
 enum Direction { N, E, S, W };
 static const int NUM_PLAYERS = 4;
-static const int DISPLAY_WIDTH = 640;
-static const int DISPLAY_HEIGHT = 480;
+static const int DISPLAY_WIDTH = 224;
+static const int DISPLAY_HEIGHT = 288;
 static const int TILE_WIDTH = 5;
 static const int TILE_HEIGHT = 5;
 

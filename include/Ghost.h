@@ -21,6 +21,7 @@ public:
 	}
 
 	virtual void update();
+	virtual void render() {}
 
 	virtual void upPressed() {
 		direction = N;

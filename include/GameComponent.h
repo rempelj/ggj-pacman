@@ -21,16 +21,12 @@ private:
 	GameObject *_gameObject;
 
 public:
-	GameComponent(){
-
-	}
 	GameComponent(GameObject *owner){
 		_gameObject = owner;
 	}
 
 	virtual void update() = 0;
-
-
+	virtual void render() = 0;
 
 	virtual ~GameComponent(){}
 

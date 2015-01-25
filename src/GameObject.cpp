@@ -22,15 +22,8 @@ void GameObject::update() {
 }
 
 void GameObject::render(){
-	for (int i = 0; i < components.size(); i++) {
-		
-		if (typeid(components[i]) == typeid(esprite))
-		{
-			
-			ALLEGRO_BITMAP* bits = dynamic_cast<Sprite*>(components[i])->Bitmap;
-			al_draw_bitmap(bits, 0, 0, 0); 
-		}
-			
+	for(int i =0; i < components.size(); i++) {
+		components[i]->render();
 	}
 }
 

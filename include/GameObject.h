@@ -19,7 +19,6 @@ class GameObject {
 private:
 	std::vector<GameComponent*> components;
 	Transform *_transform;
-	Sprite esprite;
 public:
 	GameObject();
 
@@ -35,6 +34,17 @@ public:
 		components.push_back(component);
 
 		return component;
+	}
+
+	// Return a component of specified type, or null if not found
+	template <class T> T* getComponent() {
+		for (int i = 0; i < components.size(); i++) {
+			if(typeid(components[i]) == typeid(T)) {
+				return components[i];
+			}
+		}
+
+		return nullptr;
 	}
 };
 

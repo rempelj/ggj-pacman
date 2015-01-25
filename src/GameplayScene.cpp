@@ -16,20 +16,18 @@
 #include "Ghost.h"
 #include "InputManager.h"
 
-GameplayScene::GameplayScene() {
-	
-	
-	
+void GameplayScene::init() {
 
 	// add pacman's corpse to the scene
-	GameObject *pacmanGo = new GameObject();\
+	GameObject *pacmanGo = new GameObject();
 	pacman = pacmanGo->addComponent<PacmanCorpse>();
 
-	Sprite* sprite = pacmanGo->addComponent<Sprite>();
-//	if (!Image){
-		//sprite->SetSprite(Image);
-	//}
-	
+	ALLEGRO_BITMAP *Image = NULL;
+	if (al_init_image_addon()) {
+		Image = al_load_bitmap("image.png");
+		pacmanGo->addComponent<Sprite>()->SetSprite(Image);
+	}
+
 	objects.push_back(pacmanGo);
 
 	// add players (ghosts)
@@ -54,8 +52,7 @@ void GameplayScene::render() {
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 
 	for(int i =0; i < objects.size(); i++) {
-		Transform* t = objects[i]->getTransform();
-		//al_draw_filled_rectangle(t->x, t->y, t->x+t->width, t->y+t->height, al_map_rgb(0,255,0));
+		objects[i]->render();
 	}
 
 	al_flip_display();

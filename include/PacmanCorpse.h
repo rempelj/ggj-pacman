@@ -15,6 +15,7 @@ public:
 	PacmanCorpse(GameObject *owner):GameComponent(owner){}
 
 	virtual void update();
+	virtual void render(){}
 };
 
 
