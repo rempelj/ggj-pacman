@@ -24,6 +24,28 @@ void GameplayScene::init() {
 
 	ALLEGRO_BITMAP *Image = NULL;
 	if (al_init_image_addon()) {
+		int map[4][6] = {
+		{ 1, 1, 1, 1, 1, 1 },
+		{ 1, 0, 0, 0, 0, 1 },
+		{ 1, 0, 0, 0, 0, 1 },
+		{ 1, 1, 1, 1, 1, 1 } };
+
+		Image = al_load_bitmap("tile.png");
+
+		for (int i = 0; i < 4; i++){
+			for (int j = 0; j < 6; j++){
+				if (map[i][j]){
+					GameObject *tile = new GameObject();
+					tile->getTransform()->x = i * al_get_bitmap_width(Image);
+					tile->getTransform()->y = j * al_get_bitmap_height(Image);
+					tile->addComponent<Sprite>()->SetSprite(Image);
+					objects.push_back(tile);
+				}
+				
+			}
+		}
+
+
 		Image = al_load_bitmap("deadpac.png");
 		pacmanGo->addComponent<Sprite>()->SetSprite(Image);
 	}

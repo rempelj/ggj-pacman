@@ -19,6 +19,6 @@ static const int TILE_WIDTH = 5;
 static const int TILE_HEIGHT = 5;
 
 // debug flags
-static const bool DEBUG_RENDER_HITBOXES = true;
+static const bool DEBUG_RENDER_HITBOXES = false;
 
 #endif /* COMMON_H_ */
