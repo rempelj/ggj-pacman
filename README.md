@@ -9,6 +9,11 @@ GameObjects
 - Each GameComponent provides a specific functionality 
 - Every GameObject contains a Transform component to represent the object's position and size
 
+GameComponents
+==============
+- GameComponents should never be initialized on their own. Instead, initialize a GameComponent by passing the Type to a GameObject, via GameObject#addComponent.
+- The GameObject will return the new GameComponent. Then you can call setup functions for the component.
+
 Setup with OSX and Eclipse
 =====================
 - Install Allegro5: https://wiki.allegro.cc/index.php?title=Install_Allegro5_From_Git
