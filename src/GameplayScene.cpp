@@ -36,7 +36,7 @@ void GameplayScene::init() {
 
 		for (int i = 0; i < TILE_COUNT_X; i++){
 			for (int j = 0; j < TILE_COUNT_Y; j++){
-				if (map[i][j]){
+				if (map[j][i]){
 					GameObject *tile = new GameObject();
 					tile->getTransform()->x = i * al_get_bitmap_width(Image);
 					tile->getTransform()->y = j * al_get_bitmap_height(Image);

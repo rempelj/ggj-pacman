@@ -40,18 +40,20 @@ int** loadLevel(const char* filename) {
 	char buf[TILE_COUNT_X +1];
 
 	// create the map
-	int** map = new int*[TILE_COUNT_X];
-	for(int i = 0; i < TILE_COUNT_X; ++i) {
-	    map[i] = new int[TILE_COUNT_Y];
+	int** map = new int*[TILE_COUNT_Y];
+	for(int i = 0; i < TILE_COUNT_Y; ++i) {
+	    map[i] = new int[TILE_COUNT_X];
 
 	    // read row from file
 	    if (!fin.eof()) {
 			fin.getline(buf, TILE_COUNT_X +1);
 		}
 
-	    for(int j = 0; j < TILE_COUNT_Y; ++j) {
+	    for(int j = 0; j < TILE_COUNT_X; ++j) {
+	    //	printf("%c", buf[j]);
 	    	map[i][j] = charToInt(buf[j]);
 		}
+	 //   printf("\n");
 	}
 
 	return map;
