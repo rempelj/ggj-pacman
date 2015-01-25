@@ -18,14 +18,12 @@ class Sprite : public GameComponent {
 public:
 	ALLEGRO_BITMAP* Bitmap;
 
-	Sprite(){
-
-	}
 	Sprite(GameObject *owner) :GameComponent(owner){
 		Bitmap = NULL;
 	}
 	void SetSprite(ALLEGRO_BITMAP* Bits);
 	virtual void update();
+	virtual void render();
 
 };
 

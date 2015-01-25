@@ -48,11 +48,6 @@ void GameManager::start() {
 		return;
 	 }
 
-	ALLEGRO_BITMAP *Image = NULL;
-	if (al_init_image_addon())
-		Image = al_load_bitmap("image.png");
-	
-
 	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 	al_register_event_source(event_queue, al_get_keyboard_event_source());
@@ -63,6 +58,8 @@ void GameManager::start() {
 
 	al_start_timer(timer);
 	
+	gameplayScene.init();
+
 	while(true) {
 		ALLEGRO_EVENT ev;
 		ALLEGRO_TIMEOUT timeout;
