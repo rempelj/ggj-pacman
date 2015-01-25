@@ -68,7 +68,7 @@ void GameplayScene::init() {
 	for(int i = 0; i < NUM_PLAYERS; i++) {
 		GameObject *ghostGo = new GameObject();
 		Ghost *player = ghostGo->addComponent<Ghost>();
-		player->SetVector(objects);
+		player->SetVector(&objects);
 		objects.push_back(ghostGo);
 
 		players.push_back(player);

@@ -11,7 +11,7 @@
 #include "SolidCollider.h"
 #include "PacmanCorpse.h"
 
-void Ghost::SetVector(std::vector<GameObject*> Objects){
+void Ghost::SetVector(std::vector<GameObject*>* Objects){
 	otherObjects = Objects;
 }
 
@@ -20,31 +20,34 @@ int Ghost::TryMove(int xMove, int yMove){
 	int potX = t->x + xMove;
 	int potY = t->y + yMove;
 
-	for (int i = 0; i < otherObjects.size(); i++)
+	for (int i = 0; i < (*otherObjects).size(); i++)
 	{
 		
-		Transform *c = otherObjects[i]->getTransform();
+		Transform *c = (*otherObjects)[i]->getTransform();
 		if (   (potX + t->width > c->x)
 			&& (potX < c->x + c->width)
 			&& (potY + t->height > c->y)
 			&& (potY < c->y + c->height)
 			)
 		{
-			if (otherObjects[i]->getComponent<SolidCollider>()){
+			if ((*otherObjects)[i]->getComponent<SolidCollider>()){
 				return 0;
 			}
+			else{
+				PacmanCorpse* pac = (*otherObjects)[i]->getComponent<PacmanCorpse>();
+				if (pac){
+					ALLEGRO_BITMAP *temp = pac->GetSprite();
+					(*otherObjects)[i]->removeComponent<PacmanCorpse>(pac);
+					_gameObject->addComponent<PacmanCorpse>()->SetSprite(temp);
 
-			PacmanCorpse* pac = otherObjects[i]->getComponent<PacmanCorpse>();
-			if (pac){
-				ALLEGRO_BITMAP *temp = pac->GetSprite();
-				otherObjects[i]->removeComponent<PacmanCorpse>(pac);
-				_gameObject->addComponent<PacmanCorpse>()->SetSprite(temp);
-
-				Ghost* otherGhost = otherObjects[i]->getComponent<Ghost>();
-				if (otherGhost){
-					otherGhost->Stun();
+					Ghost* otherGhost = (*otherObjects)[i]->getComponent<Ghost>();
+					if (otherGhost){
+						otherGhost->Stun();
+					}
 				}
 			}
+
+			
 
 		}
 		
