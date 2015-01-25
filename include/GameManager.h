@@ -15,13 +15,15 @@
 
 class GameManager {
 private:
-	GameplayScene gameplayScene;
+	
 
 	GameManager(){}
 	GameManager(GameManager const&);
 	void operator=(GameManager const&);
 
 public:
+	GameplayScene gameplayScene;
+
 	static GameManager& instance()
 	{
 		static GameManager instance;

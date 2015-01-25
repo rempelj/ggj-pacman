@@ -20,9 +20,7 @@
 
 void GameplayScene::init() {
 
-	// add pacman's corpse to the scene
-	GameObject *pacmanGo = new GameObject();
-	pacman = pacmanGo->addComponent<PacmanCorpse>();
+	
 
 	ALLEGRO_BITMAP *Image = NULL;
 	if (al_init_image_addon()) {
@@ -53,14 +51,18 @@ void GameplayScene::init() {
 		}
 
 		
-		
-
+		// add pacman's corpse to the scene
+		GameObject *pacmanGo = new GameObject();
+		pacman = pacmanGo->addComponent<PacmanCorpse>();
 		Image = al_load_bitmap("assets/deadpac.png");
+		pacman->SetSprite(Image);
 
-		pacmanGo->addComponent<Sprite>()->SetSprite(Image);
+		objects.push_back(pacmanGo);
+
+		
 	}
 
-	objects.push_back(pacmanGo);
+	
 
 	// add players (ghosts)
 	for(int i = 0; i < NUM_PLAYERS; i++) {
@@ -76,7 +78,7 @@ void GameplayScene::init() {
 			ghostGo->addComponent<Sprite>()->SetSprite(Image);
 
 			// TODO: set ghost positions somewhere other than the centre
-			ghostGo->getTransform()->x = DISPLAY_WIDTH/2;
+			ghostGo->getTransform()->x = DISPLAY_WIDTH/2 + i*50;
 			ghostGo->getTransform()->y = DISPLAY_HEIGHT/2;
 		}
 
@@ -98,4 +100,14 @@ void GameplayScene::render() {
 	}
 
 	al_flip_display();
+}
+
+int GameplayScene::RemoveObject(GameObject* obj){	// TODO: CLEANUP CODE
+	for (int i = 0; i < objects.size(); i++){
+		if (objects[i] == obj){
+			objects.erase(objects.begin() + i);
+			return 1;
+		}
+	}
+	return 0;
 }

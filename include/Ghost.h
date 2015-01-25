@@ -14,6 +14,9 @@
 #include <vector>
 
 class Ghost : public GameComponent, public InputListener {
+private:
+	int stunFrames;
+
 public:
 	Direction direction;
 	std::vector<GameObject*> otherObjects;
@@ -25,6 +28,8 @@ public:
 	int TryMove(int xMove, int yMove);
 
 	void SetVector(std::vector<GameObject*> Objects);
+
+	void Stun();
 
 	virtual void update();
 	virtual void render() {}

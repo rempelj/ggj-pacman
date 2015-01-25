@@ -22,6 +22,7 @@ public:
 		Bitmap = NULL;
 	}
 	void SetSprite(ALLEGRO_BITMAP* Bits);
+	ALLEGRO_BITMAP* GetSprite();
 	virtual void update();
 	virtual void render();
 

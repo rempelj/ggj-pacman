@@ -12,13 +12,14 @@
 enum Direction { N, E, S, W };
 
 // game settings
-const int NUM_PLAYERS = 4;
+const int NUM_PLAYERS = 2;
 const int DISPLAY_WIDTH = 224;
 const int DISPLAY_HEIGHT = 288;
 const int TILE_WIDTH = 8;
 const int TILE_HEIGHT = 8;
 const int TILE_COUNT_X = 28;
 const int TILE_COUNT_Y = 36;
+const int STUN_DURATION = 20;
 
 // debug flags
 const bool DEBUG_RENDER_HITBOXES = false;
