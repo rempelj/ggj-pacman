@@ -60,7 +60,8 @@ int Ghost::TryMove(int xMove, int yMove){
 
 			Pellet* pellet = otherObjects->at(i)->getComponent<Pellet>();
 
-			if (pellet){
+			if (pellet && getGameObject()->getComponent<PacmanCorpse>()){
+				// only collect pellets if this ghost is holding pacman
 				GameObject *pelletGo = otherObjects->at(i);
 				GameManager::instance().getGameplayScene()->RemoveObject(pelletGo);
 				score++;
