@@ -29,6 +29,7 @@ public:
 	virtual void render();
 
 	int RemoveObject(GameObject* obj);
+	ALLEGRO_BITMAP* ScaleImage(const char* path);
 };
 
 #endif /* GAMEPLAYSCENE_H_ */
