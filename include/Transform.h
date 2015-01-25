@@ -10,6 +10,7 @@
 #ifndef TRANSFORM_H_
 #define TRANSFORM_H_
 
+#include <allegro5/allegro_primitives.h>
 #include "GameComponent.h"
 #include "Common.h"
 
@@ -28,7 +29,11 @@ public:
 	}
 
 	virtual void update();
-	virtual void render(){}
+	virtual void render(){
+		if (DEBUG_RENDER_HITBOXES) {
+			al_draw_filled_rectangle(x, y, x+width, y+height, al_map_rgb(0,255,0));
+		}
+	}
 };
 
 
