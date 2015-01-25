@@ -20,11 +20,10 @@ private:
 
 public:
 	Direction direction;
-<<<<<<< HEAD
-	std::vector<GameObject*>* otherObjects;
-=======
+
+
 	std::vector<GameObject*> *otherObjects;
->>>>>>> e9a8cfc5ae69514dcde5a60dc29a9a09a8f34c27
+
 
 	Ghost(GameObject *owner):GameComponent(owner){
 		direction = E;
@@ -32,11 +31,9 @@ public:
 
 	int TryMove(int xMove, int yMove);
 
-<<<<<<< HEAD
 	void SetVector(std::vector<GameObject*>* Objects);
-=======
-	void SetVector(std::vector<GameObject*> *Objects);
->>>>>>> e9a8cfc5ae69514dcde5a60dc29a9a09a8f34c27
+
+
 
 	void Stun();
 

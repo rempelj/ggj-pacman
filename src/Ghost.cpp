@@ -13,11 +13,9 @@
 #include "Pellet.h"
 #include "GameManager.h"
 
-<<<<<<< HEAD
-void Ghost::SetVector(std::vector<GameObject*>* Objects){
-=======
+
 void Ghost::SetVector(std::vector<GameObject*> *Objects){
->>>>>>> e9a8cfc5ae69514dcde5a60dc29a9a09a8f34c27
+
 	otherObjects = Objects;
 }
 
@@ -26,24 +24,21 @@ int Ghost::TryMove(int xMove, int yMove){
 	int potX = t->x + xMove;
 	int potY = t->y + yMove;
 
-<<<<<<< HEAD
-	for (int i = 0; i < (*otherObjects).size(); i++)
-	{
-		
-		Transform *c = (*otherObjects)[i]->getTransform();
-=======
+
+
+
 	for (int i = 0; i < otherObjects->size(); i++)
 	{
 		
 		Transform *c = otherObjects->at(i)->getTransform();
->>>>>>> e9a8cfc5ae69514dcde5a60dc29a9a09a8f34c27
+
 		if (   (potX + t->width > c->x)
 			&& (potX < c->x + c->width)
 			&& (potY + t->height > c->y)
 			&& (potY < c->y + c->height)
 			)
 		{
-<<<<<<< HEAD
+
 			if ((*otherObjects)[i]->getComponent<SolidCollider>()){
 				return 0;
 			}
@@ -61,11 +56,11 @@ int Ghost::TryMove(int xMove, int yMove){
 				}
 			}
 
-<<<<<<< HEAD
+
 			
-=======
-			Pellet* pellet = otherObjects[i]->getComponent<Pellet>();
-=======
+
+		
+
 			if (otherObjects->at(i)->getComponent<SolidCollider>()){
 				return 0;
 			}
@@ -83,14 +78,14 @@ int Ghost::TryMove(int xMove, int yMove){
 			}
 
 			Pellet* pellet = otherObjects->at(i)->getComponent<Pellet>();
->>>>>>> e9a8cfc5ae69514dcde5a60dc29a9a09a8f34c27
+
 			if (pellet){
 				GameObject *pelletGo = otherObjects->at(i);
 				GameManager::instance().getGameplayScene()->RemoveObject(pelletGo);
 				score++;
 				printf("score: %d\n", score);
 			}
->>>>>>> 5f844a8ab8864c1e99f4adf2057d48da16ed6bc7
+
 
 		}
 		
