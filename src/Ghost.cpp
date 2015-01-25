@@ -13,7 +13,7 @@
 #include "Pellet.h"
 #include "GameManager.h"
 
-void Ghost::SetVector(std::vector<GameObject*> Objects){
+void Ghost::SetVector(std::vector<GameObject*> *Objects){
 	otherObjects = Objects;
 }
 
@@ -22,35 +22,35 @@ int Ghost::TryMove(int xMove, int yMove){
 	int potX = t->x + xMove;
 	int potY = t->y + yMove;
 
-	for (int i = 0; i < otherObjects.size(); i++)
+	for (int i = 0; i < otherObjects->size(); i++)
 	{
 		
-		Transform *c = otherObjects[i]->getTransform();
+		Transform *c = otherObjects->at(i)->getTransform();
 		if (   (potX + t->width > c->x)
 			&& (potX < c->x + c->width)
 			&& (potY + t->height > c->y)
 			&& (potY < c->y + c->height)
 			)
 		{
-			if (otherObjects[i]->getComponent<SolidCollider>()){
+			if (otherObjects->at(i)->getComponent<SolidCollider>()){
 				return 0;
 			}
 
-			PacmanCorpse* pac = otherObjects[i]->getComponent<PacmanCorpse>();
+			PacmanCorpse* pac = otherObjects->at(i)->getComponent<PacmanCorpse>();
 			if (pac){
 				ALLEGRO_BITMAP *temp = pac->GetSprite();
-				otherObjects[i]->removeComponent<PacmanCorpse>(pac);
+				otherObjects->at(i)->removeComponent<PacmanCorpse>(pac);
 				_gameObject->addComponent<PacmanCorpse>()->SetSprite(temp);
 
-				Ghost* otherGhost = otherObjects[i]->getComponent<Ghost>();
+				Ghost* otherGhost = otherObjects->at(i)->getComponent<Ghost>();
 				if (otherGhost){
 					otherGhost->Stun();
 				}
 			}
 
-			Pellet* pellet = otherObjects[i]->getComponent<Pellet>();
+			Pellet* pellet = otherObjects->at(i)->getComponent<Pellet>();
 			if (pellet){
-				GameObject *pelletGo = otherObjects[i];
+				GameObject *pelletGo = otherObjects->at(i);
 				GameManager::instance().getGameplayScene()->RemoveObject(pelletGo);
 				score++;
 				printf("score: %d\n", score);
