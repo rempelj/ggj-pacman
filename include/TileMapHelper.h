@@ -20,16 +20,21 @@ using std::ifstream;
 
 #include <cstring>
 
+const int TILE_EMPTY = 0;
+const int TILE_WALL = 1;
+const int TILE_PELLET = 2;
 
 using namespace std;
 
 int charToInt(char c) {
 	switch(c) {
 		case '=':
-			return 1;
+			return TILE_WALL;
+		case '.':
+			return TILE_PELLET;
 		case ' ':
 		default:
-			return 0;
+			return TILE_EMPTY;
 	}
 }
 
