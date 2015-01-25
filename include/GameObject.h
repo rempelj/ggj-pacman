@@ -24,6 +24,7 @@ public:
 	Transform *getTransform() { return _transform; }
 
 	void update();
+	void render();
 
 	// Attaches and returns a GameComponent
 	template <class T> T* addComponent() {

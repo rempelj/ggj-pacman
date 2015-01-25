@@ -18,3 +18,7 @@ void GameObject::update() {
 		components[i]->update();
 	}
 }
+
+
+
+
