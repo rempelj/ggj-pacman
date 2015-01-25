@@ -24,8 +24,8 @@ void GameplayScene::init() {
 
 	ALLEGRO_BITMAP *Image = NULL;
 	if (al_init_image_addon()) {
-		Image = al_load_bitmap("image.png");
-	//	pacmanGo->addComponent<Sprite>()->SetSprite(Image);
+		Image = al_load_bitmap("deadpac.png");
+		pacmanGo->addComponent<Sprite>()->SetSprite(Image);
 	}
 
 	objects.push_back(pacmanGo);
