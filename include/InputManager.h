@@ -11,9 +11,13 @@
 #define INPUTMANAGER_H_
 
 #include <allegro5/allegro.h>
+#include <vector>
+#include "InputListener.h"
 
 class InputManager {
 private:
+	std::vector<InputListener*> listeners;
+
 	InputManager(){}
 	InputManager(InputManager const&);
 	void operator=(InputManager const&);
@@ -26,6 +30,9 @@ public:
 	}
 
 	void handleEvent(ALLEGRO_EVENT ev);
+	void registerListener(InputListener* listener){
+		listeners.push_back(listener);
+	}
 };
 
 

@@ -10,8 +10,9 @@
 
 #include "GameComponent.h"
 #include "Common.h"
+#include "InputListener.h"
 
-class Ghost : public GameComponent {
+class Ghost : public GameComponent, public InputListener {
 public:
 	Direction direction;
 
@@ -20,6 +21,19 @@ public:
 	}
 
 	virtual void update();
+
+	virtual void upPressed() {
+		direction = N;
+	}
+	virtual void downPressed() {
+		direction = S;
+	}
+	virtual void leftPressed() {
+		direction = W;
+	}
+	virtual void rightPressed() {
+		direction = E;
+	}
 };
 
 

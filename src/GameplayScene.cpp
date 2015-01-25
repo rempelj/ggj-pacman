@@ -12,6 +12,7 @@
 #include "PacmanCorpse.h"
 #include "Common.h"
 #include "Ghost.h"
+#include "InputManager.h"
 
 GameplayScene::GameplayScene() {
 	// add pacman's corpse to the scene
@@ -26,6 +27,8 @@ GameplayScene::GameplayScene() {
 		objects.push_back(ghostGo);
 
 		players.push_back(player);
+
+		InputManager::instance().registerListener(player);
 	}
 }
 
