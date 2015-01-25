@@ -15,6 +15,7 @@
 
 class Ghost : public GameComponent, public InputListener {
 private:
+	int score;
 	int stunFrames;
 
 public:
