@@ -17,6 +17,7 @@
 class InputManager {
 private:
 	std::vector<InputListener*> listeners;
+	bool controllerIn;
 
 	InputManager(){}
 	InputManager(InputManager const&);

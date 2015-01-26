@@ -12,6 +12,11 @@
 void InputManager::handleEvent(ALLEGRO_EVENT ev) {
 
 	// TODO: Assign different buttons to different players
+	if (ev.type == ALLEGRO_EVENT_JOYSTICK_AXIS
+		|| ev.type == ALLEGRO_EVENT_JOYSTICK_BUTTON_DOWN){
+		
+
+	}
 
 	for(int i = 0; i < listeners.size(); i++) {
 		if (i == 0){

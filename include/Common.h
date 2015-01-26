@@ -19,6 +19,6 @@ const int TILE_WIDTH = 8;
 const int TILE_HEIGHT = 8;
 const int TILE_COUNT_X = 28;
 const int TILE_COUNT_Y = 36;
-const int STUN_DURATION = 120;
+const int STUN_DURATION = 45;
 
 #endif /* COMMON_H_ */

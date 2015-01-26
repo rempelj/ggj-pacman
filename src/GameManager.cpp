@@ -78,6 +78,11 @@ void GameManager::start() {
 				InputManager::instance().handleEvent(ev);
 			}
 
+			if (ev.type == ALLEGRO_EVENT_JOYSTICK_AXIS
+				|| ev.type == ALLEGRO_EVENT_JOYSTICK_BUTTON_DOWN){
+				InputManager::instance().handleEvent(ev);
+			}
+
 			if (ev.type == ALLEGRO_EVENT_TIMER){
 
 				// GAME LOOP GOES HERE
