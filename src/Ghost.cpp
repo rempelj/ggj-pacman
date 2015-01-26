@@ -20,11 +20,12 @@ void Ghost::SetVector(std::vector<GameObject*> *Objects){
 }
 
 int Ghost::TryMove(int xMove, int yMove){
+	xMove *= speedMod;
+	yMove *= speedMod;
+
 	Transform *t = getGameObject()->getTransform();
 	int potX = t->x + xMove;
 	int potY = t->y + yMove;
-
-
 
 
 	for (int i = 0; i < otherObjects->size(); i++)
@@ -69,6 +70,12 @@ int Ghost::TryMove(int xMove, int yMove){
 			}
 
 
+			SpeedBoost* boost = otherObjects->at(i)->getComponent<SpeedBoost>();
+			if(boost) {
+				GameObject *boostGo = otherObjects->at(i);
+				GameManager::instance().getGameplayScene()->RemoveObject(boostGo);
+				applyBoost(boost);
+			}
 		}
 		
 	}
@@ -82,8 +89,18 @@ void Ghost::Stun(){
 	stunFrames = STUN_DURATION;
 }
 
+void Ghost::applyBoost(SpeedBoost *boost) {
+	speedMod = boost->modifier;
+	speedBoostFrames = boost->duration;
+}
+
 void Ghost::update(){
 	Transform *t = getGameObject()->getTransform();
+
+	speedBoostFrames--;
+	if (speedBoostFrames <= 0) {
+		speedMod = 1;
+	}
 
 	if (stunFrames > 0){
 		stunFrames--;

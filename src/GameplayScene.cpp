@@ -19,6 +19,7 @@
 #include "TileMapHelper.h"
 #include "Pellet.h"
 #include "AssetManager.h"
+#include "SpeedBoost.h"
 
 void GameplayScene::init() {
 
@@ -79,6 +80,16 @@ void GameplayScene::init() {
 
 		InputManager::instance().registerListener(player);
 	}
+
+	// add cherry (speed boost)
+	GameObject *cherryGo = new GameObject();
+	cherryGo->addComponent<SpeedBoost>();
+	ALLEGRO_BITMAP* Image = AssetManager::instance().getScaledImage("assets/cherry.png");
+	cherryGo->addComponent<Sprite>()->SetSprite(Image);
+	cherryGo->getTransform()->x = 20;
+	cherryGo->getTransform()->y = 60;
+	objects.push_back(cherryGo);
+
 }
 
 void GameplayScene::update() {

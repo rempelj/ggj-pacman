@@ -12,20 +12,23 @@
 #include "Common.h"
 #include "InputListener.h"
 #include <vector>
+#include "SpeedBoost.h"
 
 class Ghost : public GameComponent, public InputListener {
 private:
 	int score;
 	int stunFrames;
+	int speedMod;
+	int speedBoostFrames;
 
 public:
 	Direction direction;
 
-
 	std::vector<GameObject*> *otherObjects;
 
-
 	Ghost(GameObject *owner):GameComponent(owner){
+		speedMod = 1;
+		speedBoostFrames = 0;
 		otherObjects = nullptr;
 		score = 0;
 		stunFrames = 0;
@@ -37,7 +40,7 @@ public:
 	void SetVector(std::vector<GameObject*>* Objects);
 
 
-
+	void applyBoost(SpeedBoost *boost);
 	void Stun();
 
 	virtual void update();

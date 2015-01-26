@@ -11,12 +11,19 @@
 
 class SpeedBoost : public GameComponent{
 public:
-	int modifier = 2;
+	static const int SPEED_MOD = 2;
+	static const int BOOST_DURATION = 120;
+
+	int modifier;
+	int duration;
+
 	SpeedBoost(GameObject *owner) :GameComponent(owner){
+		modifier = SPEED_MOD;
+		duration = BOOST_DURATION;
 	}
 
-	virtual void update();
-	virtual void render();
+	virtual void update(){}
+	virtual void render(){}
 };
 
 
