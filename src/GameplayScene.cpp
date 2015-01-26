@@ -86,8 +86,22 @@ void GameplayScene::init() {
 	cherryGo->addComponent<SpeedBoost>();
 	ALLEGRO_BITMAP* Image = AssetManager::instance().getScaledImage("assets/cherry.png");
 	cherryGo->addComponent<Sprite>()->SetSprite(Image);
-	cherryGo->getTransform()->x = 20;
-	cherryGo->getTransform()->y = 60;
+	cherryGo->getTransform()->x = 16;
+	cherryGo->getTransform()->y = 55;
+	objects.push_back(cherryGo);
+
+	cherryGo = new GameObject();
+	cherryGo->addComponent<SpeedBoost>();
+	cherryGo->addComponent<Sprite>()->SetSprite(Image);
+	cherryGo->getTransform()->x = 193;
+	cherryGo->getTransform()->y = 55;
+	objects.push_back(cherryGo);
+
+	cherryGo = new GameObject();
+	cherryGo->addComponent<SpeedBoost>();
+	cherryGo->addComponent<Sprite>()->SetSprite(Image);
+	cherryGo->getTransform()->x = DISPLAY_WIDTH/2;
+	cherryGo->getTransform()->y = 174;
 	objects.push_back(cherryGo);
 
 }

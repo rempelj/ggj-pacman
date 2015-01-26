@@ -16,12 +16,13 @@
 
 class Ghost : public GameComponent, public InputListener {
 private:
-	int score;
+	
 	int stunFrames;
 	int speedMod;
 	int speedBoostFrames;
 
 public:
+	int score;
 	Direction direction;
 
 	std::vector<GameObject*> *otherObjects;

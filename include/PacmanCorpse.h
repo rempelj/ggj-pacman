@@ -19,9 +19,9 @@ public:
 	PacmanCorpse(GameObject *owner):Sprite(owner){
 		Transform *t = getGameObject()->getTransform();
 		if(t->x == 0) 
-			t->x = DISPLAY_WIDTH / 2;
+			t->x = DISPLAY_WIDTH / 2 - 8;
 		if (t->y == 0)
-			t->y = DISPLAY_HEIGHT/3;
+			t->y = DISPLAY_HEIGHT/3 + 8;
 
 
 	}
