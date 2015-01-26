@@ -18,34 +18,16 @@
 #include "InputManager.h"
 #include "TileMapHelper.h"
 #include "Pellet.h"
-
-ALLEGRO_BITMAP* GameplayScene::ScaleImage(const char* path){
-	ALLEGRO_BITMAP* targ = al_get_target_bitmap();
-	ALLEGRO_BITMAP* temp = al_load_bitmap(path);
-	ALLEGRO_BITMAP* Image = al_create_bitmap(TILE_WIDTH, TILE_HEIGHT);
-	al_set_target_bitmap(Image);
-	al_draw_scaled_bitmap(temp, 0, 0, al_get_bitmap_width(temp), al_get_bitmap_height(temp), 0, 0, TILE_WIDTH, TILE_HEIGHT, 0);
-	al_set_target_bitmap(targ);
-	return Image;
-}
+#include "AssetManager.h"
+#include "SpeedBoost.h"
 
 void GameplayScene::init() {
 
-	
-
-	ALLEGRO_BITMAP *Image = NULL;
 	if (al_init_image_addon()) {
-
 		int **map = loadLevel("assets/level1.map");
 
-		ALLEGRO_BITMAP* targ = al_get_target_bitmap();
-		ALLEGRO_BITMAP* temp = al_load_bitmap("assets/tile.png");
-		Image = al_create_bitmap(TILE_WIDTH, TILE_HEIGHT);
-		al_set_target_bitmap(Image);
-		al_draw_scaled_bitmap(temp, 0, 0, al_get_bitmap_width(Image), al_get_bitmap_height(Image), 0, 0, TILE_WIDTH, TILE_HEIGHT, 0);
-		al_set_target_bitmap(targ);
-
-		ALLEGRO_BITMAP *PelletImage = al_load_bitmap("assets/pellet.png");
+		ALLEGRO_BITMAP *Image = AssetManager::instance().getScaledImage("assets/tile.png");
+		ALLEGRO_BITMAP *PelletImage = AssetManager::instance().getScaledImage("assets/pellet.png");
 
 		for (int i = 0; i < TILE_COUNT_X; i++){
 			for (int j = 0; j < TILE_COUNT_Y; j++){
@@ -72,20 +54,12 @@ void GameplayScene::init() {
 		// add pacman's corpse to the scene
 		GameObject *pacmanGo = new GameObject();
 		pacman = pacmanGo->addComponent<PacmanCorpse>();
-
-
-		
-		Image = ScaleImage("assets/deadpac.png");
-
+		Image = AssetManager::instance().getScaledImage("assets/deadpac.png");
 		pacman->SetSprite(Image);
-
 		objects.push_back(pacmanGo);
-
-		
 	}
 
 	
-
 	// add players (ghosts)
 	for(int i = 0; i < NUM_PLAYERS; i++) {
 		GameObject *ghostGo = new GameObject();
@@ -96,7 +70,7 @@ void GameplayScene::init() {
 		players.push_back(player);
 
 		if (al_init_image_addon()) {
-			Image = al_load_bitmap("assets/ghost.png");
+			ALLEGRO_BITMAP *Image = AssetManager::instance().getScaledImage("assets/ghost.png");
 			ghostGo->addComponent<Sprite>()->SetSprite(Image);
 
 			// TODO: set ghost positions somewhere other than the centre
@@ -106,6 +80,16 @@ void GameplayScene::init() {
 
 		InputManager::instance().registerListener(player);
 	}
+
+	// add cherry (speed boost)
+	GameObject *cherryGo = new GameObject();
+	cherryGo->addComponent<SpeedBoost>();
+	ALLEGRO_BITMAP* Image = AssetManager::instance().getScaledImage("assets/cherry.png");
+	cherryGo->addComponent<Sprite>()->SetSprite(Image);
+	cherryGo->getTransform()->x = 20;
+	cherryGo->getTransform()->y = 60;
+	objects.push_back(cherryGo);
+
 }
 
 void GameplayScene::update() {
